@@ -1,0 +1,88 @@
+:root {
+  --color-brand: #000000; /* black */
+  --color-accent: #ffffff; /* white */
+  --color-bg: #ffffff;
+  --color-muted: #555555;
+  --radius-card: 1.25rem;
+
+  --font-en-serif: 'Libre Caslon Display', serif;
+  --font-en-sans: 'KyivType Sans', sans-serif;
+  --font-en-script: 'Shadows Into Light Two', cursive;
+  --font-ko: 'GangwonEduAll', sans-serif;
+
+  --heading-tight: 1.1;
+  --body-lh: 1.6;
+}
+
+/* Base */
+body {
+  background: var(--color-bg);
+  color: var(--color-brand);
+  line-height: var(--body-lh);
+  font-family: var(--font-en-sans);
+}
+
+h1, h2, h3 { font-family: var(--font-en-serif); }
+.text-muted { color: var(--color-muted); }
+
+/* Buttons */
+.btn-brand {
+  background: var(--color-brand);
+  color: #fff;
+  border-radius: 9999px;
+  padding: .875rem 1.25rem;
+  font-weight: 600;
+  transition: transform .2s ease, filter .2s ease, box-shadow .2s ease;
+}
+.btn-brand:hover { filter: brightness(.95); transform: translateY(-1px); box-shadow: 0 8px 20px rgba(0,0,0,.12); }
+
+.btn-ghost {
+  border: 1px solid #000;
+  border-radius: 9999px;
+  padding: .75rem 1rem;
+  transition: background .2s ease, transform .2s ease;
+}
+.btn-ghost:hover { background: #000; color:#fff; transform: translateY(-1px); }
+
+/* Utilities used in HTML */
+.shadow-soft { box-shadow: 0 8px 30px rgba(0,0,0,.06); }
+.sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
+
+/* Subtle image hover */
+.img-zoom { transition: transform .4s ease; }
+.img-zoom:hover { transform: scale(1.02); }
+
+/* Reveal animations */
+@keyframes fade-up {
+  0% { opacity:0; transform: translateY(12px); }
+  100% { opacity:1; transform: translateY(0); }
+}
+.reveal { opacity:0; transform: translateY(12px); animation: fade-up .8s cubic-bezier(.2,.7,.2,1) both; }
+.reveal-delay-1 { animation-delay: .12s; }
+.reveal-delay-2 { animation-delay: .24s; }
+.reveal-delay-3 { animation-delay: .36s; }
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
+}
+
+/* Responsive typography & spacing overrides
+   Note: hero h1 has inline font-size in HTML. Use !important to override on small screens. */
+#hero h1 { letter-spacing: -0.01em; }
+
+@media (max-width: 1024px) {
+  #hero h1 { font-size: 56px !important; }
+}
+@media (max-width: 768px) {
+  #hero h1 { font-size: 42px !important; }
+  #hero { padding-top: 72px !important; padding-bottom: 72px !important; }
+}
+@media (max-width: 480px) {
+  #hero h1 { font-size: 34px !important; }
+  #hero { padding-top: 64px !important; padding-bottom: 64px !important; }
+}
+
+/* Card hover for features (wrap images in a figure with this class if desired) */
+.card-hover { transition: transform .25s ease, box-shadow .25s ease; }
+.card-hover:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,.12); }
