@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>신청서 | Yourself</title>
+
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Fonts + CSS -->
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Display:ital,wght@0,400;1,400&family=Shadows+Into+Light+Two&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
+  <body class="bg-white">
+    <!-- HEADER (간단 버전) -->
+    <header class="sticky top-0 z-50 bg-white border-b border-gray-200">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+        <a href="/" class="flex items-center gap-2">
+          <img src="assets/images/logo1.jpg" alt="Yourself logo" class="w-8 h-8 rounded-full object-cover" />
+          <span class="font-semibold">Yourself</span>
+        </a>
+        <nav class="hidden md:flex items-center gap-8 text-sm">
+          <a href="/" class="hover:text-brand">Home</a>
+          <a href="/apply.html" class="hover:text-brand font-semibold">Apply</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- FORM -->
+    <main class="py-[64px]">
+      <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+        <h1 class="text-3xl font-bold mb-2" style="font-family: var(--font-en-serif);">신청서</h1>
+        <p class="text-muted mb-8">아래 항목을 작성해 주세요. 제출 즉시 접수되며, 확인 후 연락드립니다.</p>
+
+        <!-- Netlify Forms: 제출 데이터는 Netlify 대시보드 > Forms -->
+        <form name="apply-ofyou"
+              method="POST"
+              data-netlify="true"
+              netlify-honeypot="bot-field"
+              action="/thanks.html"
+              class="recruit-form bg-white p-6 rounded-2xl shadow-soft">
+
+          <!-- Netlify가 폼을 인식하도록 숨김 필드 -->
+          <input type="hidden" name="form-name" value="apply-ofyou" />
+          <!-- 스팸 방지 허니팟 -->
+          <p class="sr-only" aria-hidden="true">
+            <label>Don’t fill this out: <input name="bot-field" /></label>
+          </p>
+
+          <div class="form-row">
+            <label for="name">이름</label>
+            <input id="name" type="text" name="name" required />
+          </div>
+
+          <div class="grid sm:grid-cols-2 gap-4">
+            <div class="form-row">
+              <label for="email">이메일</label>
+              <input id="email" type="email" name="email" required />
+            </div>
+            <div class="form-row">
+              <label for="phone">연락처</label>
+              <input id="phone" type="tel" name="phone" placeholder="010-1234-5678" />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <label for="purpose">신청 목적</label>
+            <select id="purpose" name="purpose" required>
+              <option value="" selected disabled>선택하세요</option>
+              <option>퍼스널 이미지 브랜딩 상담</option>
+              <option>퍼스널 컬러 진단</option>
+              <option>전체 패키지(상담+진단)</option>
+              <option>기타</option>
+            </select>
+          </div>
+
+          <div class="form-row">
+            <label for="motivation">상세 요청/메모</label>
+            <textarea id="motivation" name="motivation" rows="6" placeholder="원하시는 방향, 일정, 예산 등 메모를 남겨주세요." required></textarea>
+          </div>
+
+          <div class="grid sm:grid-cols-2 gap-4">
+            <div class="form-row">
+              <label for="portfolio">포트폴리오/링크(선택)</label>
+              <input id="portfolio" type="url" name="portfolio" placeholder="https://..." />
+            </div>
+            <div class="form-row">
+              <label for="ref">추천/유입 경로(선택)</label>
+              <input id="ref" type="text" name="ref" placeholder="인스타그램, 지인 추천 등" />
+            </div>
+          </div>
+
+          <div class="mt-6 flex items-center gap-3">
+            <button type="submit" class="btn-brand">제출하기</button>
+            <a href="/" class="btn-ghost">홈으로</a>
+          </div>
+        </form>
+
+        <!-- 개인정보 고지(선택) -->
+        <p class="text-xs text-muted mt-4">
+          제출 시 개인정보 처리에 동의한 것으로 간주됩니다. (보유기간 6개월, 문의 시 지체 없이 파기)
+        </p>
+      </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="border-t border-gray-200 py-12">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-sm">
+        <p class="text-muted">© <span id="year"></span> Yourself. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script>
+      document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>

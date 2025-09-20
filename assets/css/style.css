@@ -86,3 +86,27 @@ h1, h2, h3 { font-family: var(--font-en-serif); }
 /* Card hover for features (wrap images in a figure with this class if desired) */
 .card-hover { transition: transform .25s ease, box-shadow .25s ease; }
 .card-hover:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,.12); }
+
+/* ---- Form UI ---- */
+.recruit-form .form-row { margin: 16px 0; }
+.recruit-form label { display:block; font-weight:600; margin-bottom:8px; }
+
+.recruit-form input,
+.recruit-form select,
+.recruit-form textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  background: #fff;
+  font: inherit;
+}
+
+.recruit-form input:focus,
+.recruit-form select:focus,
+.recruit-form textarea:focus {
+  outline: none;
+  border-color: #94a3b8;
+  box-shadow: 0 0 0 3px rgba(148,163,184,.2);
+}
+
